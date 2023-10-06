@@ -14,7 +14,7 @@ function Navbar() {
   // }, []);
 
   return (
-    <nav className="p-4 bg-blue-600 text-white">
+    <nav className="p-4 w-full bg-blue-600 text-white fixed z-1000 ">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
           <h1>Indian Chef Recipes</h1>

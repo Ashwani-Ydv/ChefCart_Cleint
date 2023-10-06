@@ -15,7 +15,6 @@ function Register() {
       setError("Password should be at least 6 characters.");
       return;
     }
-
     try {
       const { user } = await firebase
         .auth()
@@ -30,7 +29,7 @@ function Register() {
   return (
     <div>
       <h1>Register</h1>
-      {/* {error && <p>{error}</p>}
+      {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -57,7 +56,7 @@ function Register() {
           onChange={(e) => setPhotoURL(e.target.value)}
         />
         <button type="submit">Register</button>
-      </form> */}
+      </form>
     </div>
   );
 }

@@ -20,7 +20,7 @@ function Login() {
   return (
     <div>
       <h1>Login</h1>
-      {/* {error && <p>{error}</p>}
+      {error && <p>{error}</p>}
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -35,7 +35,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <button type="submit">Login</button>
-      </form> */}
+      </form>
       {/* Add Google and GitHub Sign-in */}
     </div>
   );
