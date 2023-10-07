@@ -26,7 +26,7 @@ function Carousel() {
   };
 
   return (
-    <div className="relative w-full overflow-hidden h-96 mt-14">
+    <div className="relative w-full overflow-hidden h-96">
       <div
         className="flex transition-transform duration-500"
         style={{ transform: `translateX(-${activeSlide * 100}%)` }}

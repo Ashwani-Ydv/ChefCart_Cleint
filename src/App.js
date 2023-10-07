@@ -14,6 +14,7 @@ import Home from "./views/Home/index";
 import Login from "./views/Login/index";
 import Register from "./views/Register/index";
 import ChefRecipes from "./views/ChefRecipes/index";
+import Blog from "./views/Blog/index";
 import NotFound from "./views/NotFound/index";
 import { auth } from "./firebaseConfig";
 
@@ -61,6 +62,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/chef/:id",
         element: <ChefRecipes />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
     ],
   },
