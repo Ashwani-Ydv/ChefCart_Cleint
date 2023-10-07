@@ -1,5 +1,6 @@
 import React from "react";
 import ChefCard from "../../components/ChefCard/index";
+import Carousel from "../../components/Carousel/index";
 import chef from "../../assets/chef.jpg";
 
 const chefs = [
@@ -79,16 +80,12 @@ const chefs = [
   // ... add more chefs
 ];
 
-console.log("chef", chefs);
+// console.log("chef", chefs);
 
 function Home() {
   return (
     <div>
-      {/* <section className="bg-blue-600 text-white p-8"> */}
-      {/* Banner Section */}
-      {/* <h1>Welcome to Indian Chef Recipes</h1>
-      </section> */}
-
+      <Carousel />
       <section className="p-8">
         Chef Section
         <h2>Chefs</h2>

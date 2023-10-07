@@ -1,6 +1,13 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
 import Navbar from "./components/Navbar/index";
 import Footer from "./components/Footer/index";
 import Home from "./views/Home/index";
@@ -8,23 +15,80 @@ import Login from "./views/Login/index";
 import Register from "./views/Register/index";
 import ChefRecipes from "./views/ChefRecipes/index";
 import NotFound from "./views/NotFound/index";
+import { auth } from "./firebaseConfig";
 
-const App = () => {
+const AppLayout = () => {
+  const [userName, setUserName] = useState("");
+
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserName(user.displayName);
+      } else setUserName("");
+    });
+  }, []);
   return (
     <div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/chef/:id" element={<ChefRecipes />} />
-          <Route element={<NotFound />} />
-        </Routes>
+      <Navbar userName={userName} />
+      <div className="flex flex-col min-h-screen">
+        <div className="flex-grow">
+          <Outlet />
+        </div>
         <Footer />
-      </Router>
+      </div>
     </div>
   );
 };
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const appRouter = createBrowserRouter([
+  {
+    path: "/",
+    element: <AppLayout />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
+      },
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/chef/:id",
+        element: <ChefRecipes />,
+      },
+    ],
+  },
+]);
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<RouterProvider router={appRouter} />);
+
+// const App = () => {
+//   return (
+//     <div>
+//       <Router>
+//         <Navbar />
+//         <div className="flex flex-col min-h-screen">
+//           <div className="flex-grow">
+//             <Routes>
+//               <Route path="/" element={<Home />} />
+//               <Route path="/login" element={<Login />} />
+//               <Route path="/register" element={<Register />} />
+//               <Route path="/chef/:id" element={<ChefRecipes />} />
+//               <Route element={<NotFound />} />
+//             </Routes>
+//           </div>
+//           <Footer />
+//         </div>
+//       </Router>
+//     </div>
+//   );
+// };
+
+// ReactDOM.render(<App />, document.getElementById("root"));

@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function ChefCard({ chef }) {
-  console.log("chefcard", chef);
+  // console.log("chefcard", chef);
   return (
     <div className="flex justify-between rounded-lg p-2 bg-slate-800 ">
       <div className="w-32">
@@ -14,7 +14,9 @@ function ChefCard({ chef }) {
         <p>{chef.recipes} Recipes</p>
         <p>{chef.likes} Likes</p>
         <Link to={`/chef/${chef.id}`} className="btn btn-primary">
-          <button className="bg-sky-400 p-2 border-r-2">View Recipes</button>
+          <button className="inline-block cursor-pointer rounded-md bg-blue-800 px-4 py-3 text-center text-sm font-semibold text-white transition duration-200 ease-in-out">
+            View Recipes
+          </button>
         </Link>
       </div>
     </div>
