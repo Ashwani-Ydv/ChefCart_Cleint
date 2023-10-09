@@ -2,9 +2,8 @@
 import React, { useState, useEffect } from "react";
 import ChefContext from "./ChefContext";
 import chefImg from "../assets/chef.jpg";
-import { onAuthStateChanged } from "../firebaseConfig";
+import { auth, onAuthStateChanged } from "../firebaseConfig";
 import {
-  auth,
   getAuth,
   signInWithEmailAndPassword,
   signOut,
