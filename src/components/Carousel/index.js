@@ -7,7 +7,7 @@ import carousel5 from "../../assets/carousel5.avif";
 
 function Carousel() {
   const [activeSlide, setActiveSlide] = useState(0);
-  const totalSlides = 3; // Assuming you have 4 slides, indexed from 0 to 3
+  const totalSlides = 3;
 
   const handlePrev = () => {
     if (activeSlide > 0) {

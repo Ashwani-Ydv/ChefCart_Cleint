@@ -4,22 +4,6 @@ import { Link } from "react-router-dom";
 import { auth } from "../../firebaseConfig";
 import { useNavigate, useHistory } from "react-router-dom";
 
-const registerUser = async (name, email, password) => {
-  try {
-    const userCredential = await createUserWithEmailAndPassword(
-      auth,
-      email,
-      password
-    );
-    const user = userCredential.user;
-    // You can set up the user's display name here if you wish
-    // await user.updateProfile({ displayName: name });
-    // Redirect or handle successful registration
-  } catch (err) {
-    setError(err.message);
-  }
-};
-
 function Register() {
   const [values, setValues] = useState({
     name: "",

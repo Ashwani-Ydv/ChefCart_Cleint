@@ -15,8 +15,6 @@ function LoginForm() {
     password: "",
   });
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
   const googleProvider = new GoogleAuthProvider();
@@ -26,7 +24,7 @@ function LoginForm() {
     try {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
-      // Handle successful login, e.g. redirect to home page or set user state
+      // Handle successful login
       history("/");
     } catch (error) {
       console.error("Error signing in with Google:", error.message);
@@ -52,15 +50,12 @@ function LoginForm() {
       return;
     }
     setError("");
-    // setSubmitButtonDisable(true);
     console.log("values", values);
     signInWithEmailAndPassword(auth, values.email, values.password)
       .then(async (res) => {
-        // setSubmitButtonDisable(false);
         history("/");
       })
       .catch((err) => {
-        // setSubmitButtonDisable(false);
         console.log(err.message);
         setError(err.message);
       });
