@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useTheme } from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
   createRoutesFromElements,

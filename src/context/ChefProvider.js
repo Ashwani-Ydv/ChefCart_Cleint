@@ -17,11 +17,6 @@ const ChefProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
   const [authError, setAuthError] = useState(null);
 
-  console.log("context recipe", recipes);
-  console.log("context chefs", chefs);
-  console.log("context ingredients", recipes);
-  console.log("current user", currentUser);
-
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
